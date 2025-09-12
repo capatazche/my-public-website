@@ -8,12 +8,14 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Navbar />
-      {/* Rest of your website content */}
+    <div className="h-screen w-screen">
+      <header>
+          <Navbar />
+      </header>
+
       <main className="container mx-auto p-4">
           <h1>Welcome to my portfolio</h1>
-          <div>
+          <div className="flex flex-row justify-around px-[10%]">
               <a href="https://vite.dev" target="_blank">
                   <img src={viteLogo} className="logo" alt="Vite logo" />
               </a>
@@ -34,7 +36,7 @@ function App() {
               Click on the Vite and React logos to learn more
           </p>
       </main>
-    </>
+    </div>
   )
 }
 
