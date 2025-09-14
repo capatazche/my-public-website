@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0A192F;
-  --color-bg-nav: #112240;
-  --color-secondary: #F0F8FF;
-  --color-tertiary: #ABB2BF;
-  --color-accent: #64FFDA;
-  --color-accent-hover: #A7FFEA;
+  --color-primary: #1E293B;      /* Dark Slate background */
+  --color-bg-nav: #334155;       /* Lighter Slate for navbar/surfaces */
+  --color-secondary: #E2E8F0;    /* Light Gray for main text (softer than pure white) */
+  --color-tertiary: #94A3B8;     /* Muted Gray for secondary text */
+  --color-accent: #F97316;       /* Bright Orange for links, buttons */
+  --color-accent-hover: #FB923C; /* Lighter Orange for hover states */
 }
 
 :root {
