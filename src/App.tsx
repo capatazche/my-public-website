@@ -13,13 +13,13 @@ function App() {
           <Navbar />
       </header>
 
-      <main className="container mx-auto p-4">
+      <main className="container mx-auto p-4 ">
           <h1>Welcome to my portfolio</h1>
-          <div className="flex flex-row justify-around px-[10%]">
-              <a href="https://vite.dev" target="_blank">
+          <div className="flex flex-row max-w-max mx-auto">
+              <a href="https://vite.dev" target="_blank" className="px-1">
                   <img src={viteLogo} className="logo" alt="Vite logo" />
               </a>
-              <a href="https://react.dev" target="_blank">
+              <a href="https://react.dev" target="_blank" className="px-1">
                   <img src={reactLogo} className="logo react" alt="React logo" />
               </a>
           </div>
@@ -32,7 +32,7 @@ function App() {
                   Edit <code>src/App.tsx</code> and save to test HMR
               </p>
           </div>
-          <p className="read-the-docs">
+          <p className="text-tertiary">
               Click on the Vite and React logos to learn more
           </p>
       </main>
