@@ -9,7 +9,14 @@ function App() {
 
   return (
     <div className="h-screen w-screen">
-      <header>
+      <header
+        className="
+            sticky top z-50
+            bg-bg-nav
+            backdrop-blur-sm
+            border-b border-tertiary
+            p-4"
+      >
           <Navbar />
       </header>
 
