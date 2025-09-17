@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -12,15 +13,15 @@ export default function Navbar() {
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo or Brand Name */}
                 <div className="text-2xl font-bold">
-                    <a href="#">My Portfolio</a>
+                    <Link to="/">My Portfolio</Link>
                 </div>
 
                 {/* Desktop Navigation Links */}
                 <div className="hidden md:flex space-x-4">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Projects</a>
-                    <a href="#">Contact</a>
+                    <Link to="/">Home</Link>
+                    <Link to="/about">About</Link>
+                    <Link to="/projects">Projects</Link>
+                    <Link to="/contact">Contact</Link>
                 </div>
 
                 {/* Mobile menu button (Hamburger) */}
@@ -44,10 +45,10 @@ export default function Navbar() {
             {/* Mobile Navigation Menu */}
             <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mt-4`}>
                 <div className="flex flex-col space-y-2">
-                    <a href="#" className="block px-4 py-2">Home</a>
-                    <a href="#" className="block px-4 py-2">About</a>
-                    <a href="#" className="block px-4 py-2">Projects</a>
-                    <a href="#" className="block px-4 py-2">Contact</a>
+                    <Link to="/" className="block px-4 py-2">Home</Link>
+                    <Link to="/about" className="block px-4 py-2">About</Link>
+                    <Link to="/projects" className="block px-4 py-2">Projects</Link>
+                    <Link to="/contact" className="block px-4 py-2">Contact</Link>
                 </div>
             </div>
         </nav>
