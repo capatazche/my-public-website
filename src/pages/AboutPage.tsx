@@ -50,14 +50,11 @@ const resumeData = {
 
 export default function AboutPage() {
     return (
-        // 'max-w-4xl' limita el ancho en pantallas grandes para mejor legibilidad.
-        // 'mx-auto' centra el contenedor.
-        // 'px-4 sm:px-6 lg:px-8' agrega padding horizontal que se ajusta al tamaño de la pantalla.
-        <div className="mx-auto p-4 md:p-8">
+        <div className="mx-auto p-2 md:p-4">
             <ResumeHeader {...resumeData.header} />
 
             <ResumeSection title="Summary">
-                <p className="text-slate-600">{resumeData.summary}</p>
+                <p className="text-justify">{resumeData.summary}</p>
             </ResumeSection>
 
             <ResumeSection title="Experience">
