@@ -31,28 +31,78 @@ const resumeData = {
             title: "Software Engineer, Science and Modeling",
             organization: "CIBO Technologies",
             location: "Minneapolis, Minnesota, United States",
-            dateRange: "June 2021 - May2023",
+            dateRange: "June 2021 - May 2023",
             details: [
                 "Maintained and scaled a complex data processing pipeline to support the science and modeling team's research and development efforts.",
                 "Developed Python scripts to automate data tabulation and analysis, improving the efficiency of data preparation for modeling.",
                 "Built and executed custom simulations using a variety of data inputs to deliver key modeling insights for external clients."
             ]
         },
+        {
+            title: "Full Stack Software Developer",
+            organization: "CarVal Investors",
+            location: "Minneapolis, Minnesota, United States",
+            dateRange: "June 2020 - May 2021",
+            details: [
+                "Played a key role in a small agile team that successfully migrated all software development from a third-party vendor to an in-house team.",
+                "Contributed across the full product lifecycle, including product ownership, UX design, and full-stack software engineering.",
+                "Focused on the development, maintenance, and strategic consolidation of internal business and investment analysis applications."
+            ]
+        },
+        {
+            title: "Software Engineer",
+            organization: "Virgin Pulse",
+            location: "Minneapolis, Minnesota, United States",
+            dateRange: "January 2019 - June 2020",
+            details: [
+                "Developed and maintained features for a complex rules engine that executed gamified rewards to nudge members towards healthier behaviors.",
+                "Served as a key contributor on the team that built the company's 'live services' coaching platform from the ground up.",
+                "Engineered solutions that incorporated third-party software, including Salesforce Health Cloud, into the core platform."
+            ]
+        },
+        {
+            title: "Technology Analyst (Software Engineer)",
+            organization: "Deutsche Bank",
+            location: "Cary, North Carolina, United States",
+            dateRange: "July 2016 - September 2017",
+            details: [
+                "Implemented new features and documented code for DB Entitlements, the bank's largest internal authorization application.",
+                "Developed a new UI for the Distressed Products Group to visualize and edit complex financial instruments.",
+                "Automated the generation of three weekly reports for the trading team, saving approximately 9 person-hours per month."
+
+    ]
+        },
     ],
     education: [
         {
             title: "Master's degree, Cognitive and Decision Making Sciences",
-            organization: "UCL",
-            location: "",
-            dateRange: "2017-2018",
-            details: []
+            organization: "University College London (UCL)",
+            location: "London, England, United Kingdom",
+            dateRange: "2017 - 2018",
+            details: [
+                "CONACYT - FUNED scholarship recipient."
+            ]
         },
-        // ... agrega el resto de tu educación
+        {
+            title: "Bachelor's degree, Mathematics with a focus on Computer Applications",
+            organization: "University of Minnesota - Twin Cities",
+            location:  "Minneapolis, Minnesota, Unites States",
+            dateRange: "2012 - 2016",
+            details: [
+                "Deans List of College of Science and Engineering (Fall 2012, Spring 2013, Spring 2014).",
+                "Global Excellence Scholarship recipient.",
+                "School of Mathematics Maximillian Lando Scholarship recipient.",
+                "J.A. Wedum Foundation Scholarship recipient."
+]
+        }
     ],
     skills: {
         languages: ["Python", "Kotlin", "Java", "TypeScript/JavaScript", "Scala", "SQL", "Matlab"],
         cloudDevOps: ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins", "Argo Workflows", "Ansible", "TeamCity", "uDeploy", "SBT"],
-        // ... agrega el resto de las categorías de skills
+        dataScience: [ "Pandas", "NumPy", "DuckDB", "Scikit-learn", "NLP", "Time-Series Analysis"],
+        backend: ["Spring", "Flask", "PostgreSQL", "Cassandra", "Apache Storm", "Jinja2"],
+        frontend: ["React", "Angular/AngularJS", "Bootstrap", "Ui-Grid"],
+        developerTools: ["Git", "Github", "Bitbucket", "SVN", "Jira", "Pytest", "Cypress", "Salesforce", "Intellij", "Linux"]
     },
     // ... más secciones
 };
@@ -86,10 +136,13 @@ export default function AboutPage() {
             </ResumeSection>
 
 
-            <ResumeSection title="Additional Information">
-                <SkillsList category="Technical Skills" skills={resumeData.skills.languages} />
+            <ResumeSection title="Technical Skills">
+                <SkillsList category="Languages" skills={resumeData.skills.languages} />
                 <SkillsList category="Cloud & DevOps" skills={resumeData.skills.cloudDevOps} />
-                {/* ... más SkillsLists ... */}
+                <SkillsList category="Data Science" skills={resumeData.skills.dataScience} />
+                <SkillsList category="Backend" skills={resumeData.skills.backend} />
+                <SkillsList category="Frontend" skills={resumeData.skills.frontend} />
+                <SkillsList category="Developer Tools" skills={resumeData.skills.developerTools} />
             </ResumeSection>
         </div>
     );
