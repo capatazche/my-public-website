@@ -27,7 +27,17 @@ const resumeData = {
                 "Translated business goals into a technical roadmap, led full-stack architectural decisions, and presented the platform's strategy and performance to prospective investors and key stakeholders."
             ]
         },
-        // ... Agrega el resto de tus experiencias aquí
+        {
+            title: "Software Engineer, Science and Modeling",
+            organization: "CIBO Technologies",
+            location: "Minneapolis, Minnesota, United States",
+            dateRange: "June 2021 - May2023",
+            details: [
+                "Maintained and scaled a complex data processing pipeline to support the science and modeling team's research and development efforts.",
+                "Developed Python scripts to automate data tabulation and analysis, improving the efficiency of data preparation for modeling.",
+                "Built and executed custom simulations using a variety of data inputs to deliver key modeling insights for external clients."
+            ]
+        },
     ],
     education: [
         {
