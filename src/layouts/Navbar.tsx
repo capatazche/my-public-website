@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -12,8 +13,12 @@ export default function Navbar() {
         <nav>
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo or Brand Name */}
-                <div className="text-2xl font-bold">
-                    <Link to="/">My Portfolio</Link>
+                <div className="text-2xl md:flex">
+                    <Link to="/" className="hover:no-underline hover:text-accent-hover">
+                        <span className="text-secondary hover:text-accent-hover">
+                            bernardovc
+                        </span>_
+                    </Link>
                 </div>
 
                 {/* Desktop Navigation Links */}
