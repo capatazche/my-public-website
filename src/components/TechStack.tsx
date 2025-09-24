@@ -1,11 +1,8 @@
-// src/components/TechStack.tsx
-
-// (Import statements for logos remain the same)
 import ReactLogo from '../assets/react.svg';
-import TypescriptLogo from '../assets/react.svg';
-import TailwindLogo from '../assets/react.svg';
-import ViteLogo from '../assets/react.svg';
-import AmplifyLogo from '../assets/react.svg';
+import TypescriptLogo from '../assets/typescript.svg';
+import TailwindLogo from '../assets/tailwind.svg';
+import ViteLogo from '../assets/vite.svg';
+import AmplifyLogo from '../assets/amplify.svg';
 
 const technologies = [
     // (The technologies array data remains exactly the same)

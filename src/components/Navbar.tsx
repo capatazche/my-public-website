@@ -12,7 +12,6 @@ export default function Navbar() {
     return (
         <nav>
             <div className="container mx-auto flex justify-between items-center">
-                {/* Logo or Brand Name */}
                 <div className="text-2xl md:flex">
                     <Link to="/" className="hover:no-underline hover:text-accent-hover">
                         <span className="text-secondary hover:text-accent-hover">
@@ -25,8 +24,8 @@ export default function Navbar() {
                 <div className="hidden md:flex space-x-4">
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>
-                    <Link to="/projects">Projects</Link>
-                    <Link to="/contact">Contact</Link>
+                    {/*<Link to="/projects">Projects</Link>*/}
+                    {/*<Link to="/contact">Contact</Link>*/}
                 </div>
 
                 {/* Mobile menu button (Hamburger) */}
@@ -52,8 +51,8 @@ export default function Navbar() {
                 <div className="flex flex-col space-y-2">
                     <Link to="/" className="block px-4 py-2">Home</Link>
                     <Link to="/about" className="block px-4 py-2">About</Link>
-                    <Link to="/projects" className="block px-4 py-2">Projects</Link>
-                    <Link to="/contact" className="block px-4 py-2">Contact</Link>
+                    {/*<Link to="/projects" className="block px-4 py-2">Projects</Link>*/}
+                    {/*<Link to="/contact" className="block px-4 py-2">Contact</Link>*/}
                 </div>
             </div>
         </nav>

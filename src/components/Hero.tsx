@@ -1,26 +1,26 @@
-// src/components/Hero.tsx
-
-import GithubLogo from '../assets/react.svg';
+import GithubLogo from '../assets/github_white.svg';
 
 export default function Hero() {
     return (
         <section className="text-center py-20">
+
+            {/* Uses the new muted foreground color TODO: is this how the varibales would be referenced if I was to put them in root instead of layer base? */}
+            <h2 className="text-3xl text-[--muted-foreground]">
+                Hello
+            </h2>
+            <p className="mb-4">
+                My name is
+            </p>
             <h1 className="text-5xl font-bold tracking-tight">
                 Bernardo Villalba Cahue
             </h1>
 
-            {/* Uses the new muted foreground color */}
-            <h2 className="mt-4 text-2xl text-[--muted-foreground]">
-                Senior Software Engineer
-            </h2>
-
-            <p className="mt-6 max-w-2xl mx-auto text-lg">
+            <p className="mt-15 max-w-2xl mx-auto text-lg">
                 Welcome to my digital space. This website is a living project, built with some of my favorite technologies.
-                It serves as both my portfolio and a practical demonstration of my skills.
             </p>
 
             <a
-                href="https://github.com/your-username/your-repo" // <-- Don't forget to change this link!
+                href="https://github.com/capatazche/my-public-website"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
