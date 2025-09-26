@@ -18,7 +18,7 @@ export default function TechStack() {
         <section className="py-15">
             <div className="text-center">
                 <h3 className="text-3xl font-bold">Built With</h3>
-                <p className="mt-2 text-[--muted-foreground]"> {/* TODO Updated text color */}
+                <p className="mt-2">
                     The core technologies making this website possible.
                 </p>
             </div>
