@@ -9,6 +9,15 @@
   --color-accent-hover: #FB923C; /* Lighter Orange for hover states */
 }
 
+[data-theme="light"] {
+  --color-primary: #F8FAFC;
+  --color-bg-nav: #FFFFFF;
+  --color-secondary: #1E293B;
+  --color-tertiary: #475569;
+  --color-accent: #F97316;
+  --color-accent-hover: #EA580C; /* Darker orange for hover on light bg */
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -23,6 +32,7 @@
   body {
     background-color: var(--color-primary);
     color: var(--color-secondary);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   a {
