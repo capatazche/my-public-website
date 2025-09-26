@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {ThemeToggleButton} from "./ThemeToggleButton.tsx";
 
 
 export default function Navbar() {
@@ -12,12 +13,15 @@ export default function Navbar() {
     return (
         <nav>
             <div className="container mx-auto flex justify-between items-center">
-                <div className="text-2xl md:flex">
-                    <Link to="/" className="hover:no-underline hover:text-accent-hover">
+                <div className="md:flex">
+                    <Link to="/" className="text-2xl  hover:no-underline hover:text-accent-hover">
                         <span className="text-secondary hover:text-accent-hover">
                             bernardovc
                         </span>_
                     </Link>
+                    <div className="ml-3">
+                        <ThemeToggleButton />
+                    </div>
                 </div>
 
                 {/* Desktop Navigation Links */}
@@ -30,7 +34,7 @@ export default function Navbar() {
 
                 {/* Mobile menu button (Hamburger) */}
                 <div className="md:hidden">
-                    <button onClick={toggleMenu} className="focus:outline-none">
+                    <button onClick={toggleMenu}>
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                   d="M4 6
