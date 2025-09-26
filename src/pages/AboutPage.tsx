@@ -8,9 +8,10 @@ const resumeData = {
     header: {
         name: "Bernardo Villalba Cahue",
         title: "Senior Software Engineer | Data-Intensive Systems & FinTech",
-        location: "Greater Minneapolis-St. Paul Area",
-        email: "bernardovillalbac@gmail.com",
-        linkedinUrl: "https://www.linkedin.com/in/bernardo-villalba-cahue"
+        location: "Minneapolis, MN",
+        email: "bernardo@bernardovc.dev",
+        linkedinUrl: "https://www.linkedin.com/in/bernardo-villalba-cahue",
+        githubUrl: "https://github.com/capatazche"
     },
     summary: "Senior Software Engineer with 9+ years of experience specializing in data-intensive systems and FinTech. Expertise in architecting and scaling distributed full-stack applications, complex data pipelines, and modern cloud infrastructure. Proven ability to lead technical projects from concept to production, translating complex business needs into robust and efficient software solutions.",
     experience: [

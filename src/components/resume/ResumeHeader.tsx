@@ -4,9 +4,10 @@ interface Props {
     location: string;
     email: string;
     linkedinUrl: string;
+    githubUrl: string;
 }
 
-export default function ResumeHeader({ name, title, location, email, linkedinUrl }: Props) {
+export default function ResumeHeader({ name, title, location, email, linkedinUrl, githubUrl }: Props) {
     return (
         <header className="flex flex-col items-center text-center py-8">
             <h1 className="text-4xl md:text-5xl font-extrabold">{name}</h1>
@@ -18,6 +19,10 @@ export default function ResumeHeader({ name, title, location, email, linkedinUrl
                 <span>|</span>
                 <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
                     LinkedIn
+                </a>
+                <span>|</span>
+                <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                    Github
                 </a>
             </div>
         </header>
