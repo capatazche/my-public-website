@@ -6,19 +6,19 @@ import AmplifyLogo from '../assets/amplify.svg';
 
 const technologies = [
     // (The technologies array data remains exactly the same)
-    { name: 'React', description: 'A powerful library for building dynamic user interfaces.', logo: ReactLogo },
-    { name: 'TypeScript', description: 'Adds static types to JavaScript, improving code quality and maintainability.', logo: TypescriptLogo },
-    { name: 'Tailwind CSS v4', description: 'A utility-first CSS framework for rapid, custom UI development.', logo: TailwindLogo },
-    { name: 'Vite', description: 'A next-generation frontend tool for blazing-fast development.', logo: ViteLogo },
-    { name: 'AWS Amplify', description: 'The platform I will use for seamless hosting and CI/CD.', logo: AmplifyLogo },
+    { name: 'React', description: 'A powerful library for building dynamic user interfaces.', logo: ReactLogo , className: "react" },
+    { name: 'TypeScript', description: 'Adds static types to JavaScript, improving code quality and maintainability.', logo: TypescriptLogo, className: "typescript" },
+    { name: 'Tailwind CSS v4', description: 'A utility-first CSS framework for rapid, custom UI development.', logo: TailwindLogo, className:"tailwind" },
+    { name: 'Vite', description: 'A next-generation frontend tool for blazing-fast development.', logo: ViteLogo, className:"vite" },
+    { name: 'AWS Amplify', description: 'The platform I will use for seamless hosting and CI/CD.', logo: AmplifyLogo, className:"amplify" },
 ];
 
 export default function TechStack() {
     return (
-        <section className="py-16">
+        <section className="py-15">
             <div className="text-center">
                 <h3 className="text-3xl font-bold">Built With</h3>
-                <p className="mt-2 text-[--muted-foreground]"> {/* Updated text color */}
+                <p className="mt-2 text-[--muted-foreground]"> {/* TODO Updated text color */}
                     The core technologies making this website possible.
                 </p>
             </div>
@@ -27,16 +27,17 @@ export default function TechStack() {
                 {technologies.map((tech) => (
                     <div
                         key={tech.name}
-                        className="
+                        className=
+                            "
                             flex flex-col items-center p-6 text-center
-                            bg-[--surface] rounded-xl border border-transparent /* Updated background */
+                            bg-bg-nav rounded-xl border border-transparent
                             transition-all duration-300
-                            hover:border-[--accent] hover:scale-[1.02] /* Updated hover border */
+                            hover:border-accent hover:scale-[1.02]
                         "
                     >
-                        <img src={tech.logo} alt={`${tech.name} logo`} className="h-14 w-14" />
+                        <img src={tech.logo} alt={`${tech.name} logo`} className={`${tech.className} logo h-14 w-14`} />
                         <h4 className="mt-4 text-xl font-semibold">{tech.name}</h4>
-                        <p className="mt-2 text-base text-[--muted-foreground]"> {/* Updated text color */}
+                        <p className="mt-2 text-base text-secondary">
                             {tech.description}
                         </p>
                     </div>

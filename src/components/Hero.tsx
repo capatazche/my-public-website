@@ -2,10 +2,8 @@ import GithubLogo from '../assets/github_white.svg';
 
 export default function Hero() {
     return (
-        <section className="text-center py-20">
-
-            {/* Uses the new muted foreground color TODO: is this how the varibales would be referenced if I was to put them in root instead of layer base? */}
-            <h2 className="text-3xl text-[--muted-foreground]">
+        <section className="text-center py-15">
+            <h2 className="text-3xl text-secondary">
                 Hello
             </h2>
             <p className="mb-4">
@@ -25,11 +23,10 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="
                     mt-8 inline-flex items-center gap-3 px-6 py-3
-                    bg-[--accent] text-white font-semibold rounded-lg /* Changed to your accent color */
+                    bg-bg-nav text-secondary font-semibold rounded-lg
                     transition-all duration-200 ease-in-out
-                    hover:scale-105 hover:bg-[--accent-hover] /* Added your hover color */
-                    focus:outline-none focus:ring-2 focus:ring-offset-2
-                    focus:ring-offset-[--background] focus:ring-[--accent]
+                    hover:scale-105
+                    focus:outline-none focus:ring-2 focus:ring-accent
                 "
             >
                 <img src={GithubLogo} alt="GitHub Logo" className="w-6 h-6" />
