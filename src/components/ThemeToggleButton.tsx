@@ -1,7 +1,6 @@
-import { useTheme } from '../hooks/useTheme'; // Adjust the import path
+import { useTheme } from '../contexts/ThemeContext.tsx';
 
 export const ThemeToggleButton = () => {
-    // TypeScript infers the types from the hook's return value
     const { theme, toggleTheme } = useTheme();
 
     return (
@@ -9,6 +8,7 @@ export const ThemeToggleButton = () => {
             id="theme-toggle"
             onClick={toggleTheme}
             aria-label="Toggle light and dark theme"
+            className="bg-primary"
         >
             {theme === 'light' ? '🌙' : '☀️'}
         </button>

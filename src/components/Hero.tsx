@@ -1,6 +1,12 @@
-import GithubLogo from '../assets/github_white.svg';
+import { useTheme } from "../contexts/ThemeContext.tsx";
+
+import GithubLogoWhite from '../assets/github_white.svg';
+import GithubLogoBlack from '../assets/github_black.svg';
 
 export default function Hero() {
+    const { theme } = useTheme()
+    console.log(theme);
+
     return (
         <section className="text-center py-15">
             <h2 className="text-3xl text-secondary">
@@ -26,10 +32,9 @@ export default function Hero() {
                     bg-bg-nav text-secondary font-semibold rounded-lg
                     transition-all duration-200 ease-in-out
                     hover:scale-105
-                    focus:outline-none focus:ring-2 focus:ring-accent
                 "
             >
-                <img src={GithubLogo} alt="GitHub Logo" className="w-6 h-6" />
+                <img src={theme === 'light' ? GithubLogoBlack : GithubLogoWhite} alt="GitHub Logo" className="w-6 h-6" />
                 View Source on GitHub
             </a>
         </section>
