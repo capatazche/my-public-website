@@ -109,7 +109,7 @@ const resumeData = {
 };
 
 
-export default function AboutPage() {
+export default function ResumePage() {
     return (
         <div className="mx-auto p-2 md:p-4">
             <ResumeHeader {...resumeData.header} />

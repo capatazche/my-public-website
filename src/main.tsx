@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 import App from './App.tsx'
 import HomePage from "./pages/HomePage.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
+import ResumePage from "./pages/ResumePage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
                 element: <HomePage/> as ReactNode,
             },
             {
-                path: 'about',
-                element: <AboutPage /> as ReactNode,
+                path: 'resume',
+                element: <ResumePage /> as ReactNode,
             },
         ],
     },
