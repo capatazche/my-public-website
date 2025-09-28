@@ -3,7 +3,9 @@ import ResumeSection  from '../components/resume/ResumeSection';
 import ExperienceItem from '../components/resume/ExperienceItem';
 import SkillsList from '../components/resume/SkillsList';
 
-// En un futuro, podrías mover estos datos a un archivo data.ts o un JSON.
+import PDFdownload from '../assets/download_pdf_icon.svg';
+
+// TODO: mover estos datos a un archivo data.ts o un JSON.
 const resumeData = {
     header: {
         name: "Bernardo Villalba Cahue",
@@ -112,7 +114,37 @@ const resumeData = {
 export default function ResumePage() {
     return (
         <div className="mx-auto p-2 md:p-4">
-            <ResumeHeader {...resumeData.header} />
+            <div className="relative">
+                <ResumeHeader {...resumeData.header} />
+
+                <div className="absolute top-0 right-0 md:p-2">
+                    <a
+                        href="../../public/bernardo_cv_SWE_Sep27_2025.pdf" // Path relative to the public folder
+                        download="BernardoVillalbaCahue_Resume.pdf"   // The desired filename for the user
+                        className="
+                            inline-flex items-center gap-2 px-3 py-2
+                            rounded-lg bg-bg-nav opacity-60 md:opacity-100
+                            transition-all duration-250 ease-in-out
+                        "
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="35" height="35" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" strokeWidth="1"
+                             strokeLinecap="round" strokeLinejoin="round"
+                             aria-label="Download resume">
+                            {/* Paper / document rectangle */}
+                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                            {/* Download arrow */}
+                            <path d="M12 8v6"/>
+                            <path d="M8 12l4 4 4-4"/>
+                            {/* Base line */}
+                            <path d="M8 18h8"/>
+                        </svg>
+
+
+                    </a>
+                </div>
+            </div>
 
             <ResumeSection title="Summary">
                 <p className="text-justify">{resumeData.summary}</p>
