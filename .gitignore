@@ -30,3 +30,6 @@ crash.log
 *.tfplan
 .terraform.lock.hcl
 .terraform/
+
+# ENV
+.env

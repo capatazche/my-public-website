@@ -3,8 +3,6 @@ import ResumeSection  from '../components/resume/ResumeSection';
 import ExperienceItem from '../components/resume/ExperienceItem';
 import SkillsList from '../components/resume/SkillsList';
 
-import PDFdownload from '../assets/download_pdf_icon.svg';
-
 // TODO: mover estos datos a un archivo data.ts o un JSON.
 const resumeData = {
     header: {
@@ -47,7 +45,7 @@ const resumeData = {
             location: "Minneapolis, Minnesota, United States",
             dateRange: "June 2020 - May 2021",
             details: [
-                "Played a key role in a small agile team that successfully migrated all software development from a third-party vendor to an in-house team.",
+                "Played a key role in a small agile team that migrated software development from a third-party vendor to an in-house team.",
                 "Contributed across the full product lifecycle, including product ownership, UX design, and full-stack software engineering.",
                 "Focused on the development, maintenance, and strategic consolidation of internal business and investment analysis applications."
             ]
@@ -59,7 +57,7 @@ const resumeData = {
             dateRange: "January 2019 - June 2020",
             details: [
                 "Developed and maintained features for a complex rules engine that executed gamified rewards to nudge members towards healthier behaviors.",
-                "Served as a key contributor on the team that built the company's 'live services' coaching platform from the ground up.",
+                "Served as a key contributor on the team that built the company's live services coaching platform from the ground up.",
                 "Engineered solutions that incorporated third-party software, including Salesforce Health Cloud, into the core platform."
             ]
         },
@@ -119,7 +117,7 @@ export default function ResumePage() {
 
                 <div className="absolute top-0 right-0 md:p-2">
                     <a
-                        href="../../public/bernardo_cv_SWE_Sep27_2025.pdf" // Path relative to the public folder
+                        href="../../public/bernardo_public_SWE_Sep30_2025.pdf" // Path relative to the public folder
                         download="BernardoVillalbaCahue_Resume.pdf"   // The desired filename for the user
                         className="
                             inline-flex items-center gap-2 px-3 py-2
