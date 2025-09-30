@@ -12,6 +12,7 @@ provider "aws" {
   profile = "bernardovc-terraform-admin"
 }
 
+# ---- Developer ----
 resource "aws_iam_user" "bernardo_developer" {
   name = "bernardo.villalba"
   path = "/users/"
@@ -33,10 +34,36 @@ output "bernardo_developer_password" {
   sensitive   = true
 }
 
+# ---- Amplify CI/CD ----
 variable "github_oauth_token" {
   description = "GitHub Personal Access Token for Amplify to access the repository."
   type        = string
   sensitive   = true
+}
+
+resource "aws_iam_role" "amplify_service_role" {
+  name = "amplify-personal-website-role"
+
+  # This is the "Trust Relationship" policy.
+  # It allows the Amplify service to assume this role.
+  assume_role_policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [
+      {
+        Action    = "sts:AssumeRole"
+        Effect    = "Allow"
+        Principal = {
+          Service = "amplify.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# This attaches the standard AWS-managed policy for Amplify deployments to our new role.
+resource "aws_iam_role_policy_attachment" "amplify_role_policy" {
+  role       = aws_iam_role.amplify_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess-Amplify"
 }
 
 resource "aws_amplify_app" "personal_website" {
@@ -45,6 +72,8 @@ resource "aws_amplify_app" "personal_website" {
 
   # Secure way to provide the Github token using the variable we defined above.
   oauth_token = var.github_oauth_token
+
+  iam_service_role_arn = aws_iam_role.amplify_service_role.arn
 
   # amplify.yml build configuration
   build_spec = <<-EOT
