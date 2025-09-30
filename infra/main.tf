@@ -76,6 +76,9 @@ resource "aws_amplify_domain_association" "main" {
   app_id      = aws_amplify_app.personal_website.id
   domain_name = "bernardovc.dev"
 
+  # Temporarily disabled for first run (to configure DNS, avoid chicken and egg problem)
+  wait_for_verification = true
+
   sub_domain {
     branch_name = aws_amplify_branch.main.branch_name
     prefix      = "" # This maps the root domain
@@ -85,4 +88,9 @@ resource "aws_amplify_domain_association" "main" {
     branch_name = aws_amplify_branch.main.branch_name
     prefix      = "www" # This maps the www subdomain
   }
+}
+
+output "amplify_dns_verification_record" {
+  description = "The CNAME record needed to verify the Amplify domain for SSL."
+  value       = aws_amplify_domain_association.main.certificate_verification_dns_record
 }
