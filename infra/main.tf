@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
   profile = "bernardovc-terraform-admin"
 }
 
@@ -53,7 +53,10 @@ resource "aws_iam_role" "amplify_service_role" {
         Action    = "sts:AssumeRole"
         Effect    = "Allow"
         Principal = {
-          Service = "amplify.amazonaws.com"
+          Service = [
+            "amplify.amazonaws.com",
+            "amplify.${var.aws_region}.amazonaws.com"
+          ]
         }
       }
     ]
