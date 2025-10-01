@@ -83,9 +83,12 @@ resource "aws_amplify_app" "personal_website" {
     version: 1
     frontend:
       phases:
+        preBuild:
+          commands:
+            - nvm use 20
+            - npm ci
         build:
           commands:
-            - npm install
             - npm run build
       artifacts:
         baseDirectory: dist
