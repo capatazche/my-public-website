@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
   profile = "bernardovc-terraform-admin"
 }
 
@@ -35,11 +35,6 @@ output "bernardo_developer_password" {
 }
 
 # ---- Amplify CI/CD ----
-variable "github_oauth_token" {
-  description = "GitHub Personal Access Token for Amplify to access the repository."
-  type        = string
-  sensitive   = true
-}
 
 resource "aws_iam_role" "amplify_service_role" {
   name = "amplify-personal-website-role"
@@ -70,13 +65,11 @@ resource "aws_iam_role_policy_attachment" "amplify_role_policy" {
 }
 
 resource "aws_amplify_app" "personal_website" {
-  name       = "personal-website"
-  repository = "https://github.com/capatazche/my-public-website"
-
-  # Secure way to provide the Github token using the variable we defined above.
-  oauth_token = var.github_oauth_token
-
+  name                 = "personal-website"
   iam_service_role_arn = aws_iam_role.amplify_service_role.arn
+
+  # After applying this -> connect to repo manually on Amplify console
+  repository = "https://github.com/capatazche/my-public-website"
 
   # amplify.yml build configuration
   build_spec = <<-EOT

@@ -119,11 +119,11 @@ export default function ResumePage() {
                     <a
                         href="../../public/bernardo_public_SWE_Sep30_2025.pdf" // Path relative to the public folder
                         download="BernardoVillalbaCahue_Resume.pdf"   // The desired filename for the user
-                        className="
+                        className={`
                             inline-flex items-center gap-2 px-3 py-2
                             rounded-lg bg-bg-nav opacity-60 md:opacity-100
                             transition-all duration-250 ease-in-out
-                        "
+                        `}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="35" height="35" viewBox="0 0 24 24"

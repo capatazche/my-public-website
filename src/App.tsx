@@ -9,12 +9,13 @@ function App() {
     <div className="h-screen w-screen">
       <ThemeProvider>
           <header
-            className="
+            className={`
                 sticky top z-50
                 bg-bg-nav
                 backdrop-blur-sm
                 border-b border-tertiary
-                p-4"
+                p-4  
+            `}
           >
               <Navbar />
           </header>

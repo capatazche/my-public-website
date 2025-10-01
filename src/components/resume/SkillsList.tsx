@@ -12,9 +12,10 @@ export default function SkillsList({ category, skills }: Props) {
                 {skills.map((skill, index) => (
                     <span
                         key={index}
-                        className="
+                        className={`
                             bg-bg-nav text-sm font-medium px-3 py-1 rounded-full
-                            hover:text-accent"
+                            hover:text-accent
+                        `}
                     >
                         {skill}
                     </span>

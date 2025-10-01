@@ -27,12 +27,12 @@ export default function Hero() {
                 href="https://github.com/capatazche/my-public-website"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
+                className={`
                     mt-8 inline-flex items-center gap-3 px-6 py-3
                     bg-bg-nav text-secondary font-semibold rounded-lg
                     transition-all duration-200 ease-in-out
                     hover:scale-105
-                "
+                `}
             >
                 <img src={theme === 'light' ? GithubLogoBlack : GithubLogoWhite} alt="GitHub Logo" className="w-6 h-6" />
                 View Source on GitHub

@@ -27,13 +27,12 @@ export default function TechStack() {
                 {technologies.map((tech) => (
                     <div
                         key={tech.name}
-                        className=
-                            "
+                        className={`
                             flex flex-col items-center p-6 text-center
                             bg-bg-nav rounded-xl border border-transparent
                             transition-all duration-300
                             hover:border-accent hover:scale-[1.02]
-                        "
+                        `}
                     >
                         <img src={tech.logo} alt={`${tech.name} logo`} className={`${tech.className} logo h-14 w-14`} />
                         <h4 className="mt-4 text-xl font-semibold">{tech.name}</h4>
