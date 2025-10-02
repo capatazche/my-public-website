@@ -79,7 +79,7 @@ resource "aws_amplify_app" "personal_website" {
         preBuild:
           commands:
             - nvm use 20
-            - npm ci
+            - npm install
         build:
           commands:
             - npm run build
