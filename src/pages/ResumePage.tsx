@@ -3,6 +3,8 @@ import ResumeSection  from '../components/resume/ResumeSection';
 import ExperienceItem from '../components/resume/ExperienceItem';
 import SkillsList from '../components/resume/SkillsList';
 
+import resumeUrl from '../assets/bernardo_public_SWE_Sep30_2025.pdf';
+
 // TODO: mover estos datos a un archivo data.ts o un JSON.
 const resumeData = {
     header: {
@@ -117,7 +119,7 @@ export default function ResumePage() {
 
                 <div className="absolute top-0 right-0 md:p-2">
                     <a
-                        href="../assets/bernardo_public_SWE_Sep30_2025.pdf" // Path relative to the public folder
+                        href={resumeUrl}
                         download="BernardoVillalbaCahue_Resume.pdf"   // The desired filename for the user
                         className={`
                             inline-flex items-center gap-2 px-3 py-2
