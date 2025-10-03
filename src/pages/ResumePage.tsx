@@ -117,7 +117,7 @@ export default function ResumePage() {
 
                 <div className="absolute top-0 right-0 md:p-2">
                     <a
-                        href="../../public/bernardo_public_SWE_Sep30_2025.pdf" // Path relative to the public folder
+                        href="../assets/bernardo_public_SWE_Sep30_2025.pdf" // Path relative to the public folder
                         download="BernardoVillalbaCahue_Resume.pdf"   // The desired filename for the user
                         className={`
                             inline-flex items-center gap-2 px-3 py-2
