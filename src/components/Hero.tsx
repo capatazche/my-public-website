@@ -5,7 +5,6 @@ import GithubLogoBlack from '../assets/github_black.svg';
 
 export default function Hero() {
     const { theme } = useTheme()
-    console.log(theme);
 
     return (
         <section className="text-center py-15">
