@@ -25,6 +25,7 @@ dist-ssr
 
 # Terraform personal configuration
 developer.tf
+terraform.tfvars
 
 # Terraform state files
 *.tfstate

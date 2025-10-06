@@ -1,8 +1,6 @@
-# My Personal Website
+# Personal Website & Portfolio Template
 
-A minimalist, fast, and accessible personal site built with React, TypeScript, Vite, Tailwind CSS v4, and React Router. It includes a theme toggle (light/dark), a home page with a tech stack showcase, and a resume page with a downloadable PDF.
-
-If deployed, the site is intended to live at: https://bernardovc.dev
+A minimalist, fast, and accessible template for your personal site, built with React, TypeScript, Vite, Tailwind CSS v4, and React Router. It includes a theme toggle (light/dark), a home page with a tech stack showcase, and a resume page with a downloadable PDF.
 
 ## Features
 
@@ -13,6 +11,28 @@ If deployed, the site is intended to live at: https://bernardovc.dev
 - Responsive navigation with mobile menu
 - Resume page with structured sections and downloadable PDF
 - Clean, strict TypeScript configuration and ESLint rules
+
+## How to Use This as a Template
+
+This repository is designed to be a turnkey solution for your own personal website. To get started, follow these high-level steps:
+
+**1. Get the Code:**
+- **Fork** this repository to your own GitHub account.
+- **Clone** your forked repository to your local machine.
+
+**2. Personalize the Content:**
+- **Update Components:** Go through the components in `src/` (especially in `src/pages/` and `src/components/`) and replace my information with your own. *TODO: generalize in a JSON file.
+- **Replace Resume:** Add your own resume PDF to the `public/` folder and update the link in `src/pages/ResumePage.tsx`. *TODO: standardize it.
+
+**3. Configure Your Infrastructure (AWS & Terraform):**
+- **Prerequisites:** You will need your own **AWS account** and a **custom domain name** you have registered.
+- **Set Up Variables:** In the `infra/` directory, copy the `terraform.tfvars.example` file to a new file named `terraform.tfvars`. Fill this file out with your own information:
+    - `domain_name`: Your custom domain (e.g., "my-cool-site.com").
+    - `repository_url`: The URL of **your forked GitHub repository**.
+    - `aws_region`: The AWS region you want to deploy to.
+- **Connect AWS:** Ensure your AWS CLI is configured with credentials for your account (`aws configure`). Terraform will use these credentials to create the necessary resources.
+
+Once you deploy the infrastructure using Terraform, AWS Amplify will provide you with the necessary **DNS records**. You must add these records in your domain registrar's settings to verify your domain and point it to your new website.
 
 ## Tech Stack
 
@@ -30,9 +50,9 @@ Prerequisites:
 
 Install dependencies:
 
-```bash
+<pre><code>
 npm install
-```
+</code></pre>
 
 Start the dev server:
 
@@ -108,7 +128,7 @@ my-personal-website/
   - / → HomePage
   - /resume → ResumePage
 
-## Resume PDF
+## Resume PDF *TODO: standardize it.
 
 - The ResumePage includes a download button that points to a PDF in the public/ folder.
 - To update the file, replace the PDF in public/ and update the path in src/pages/ResumePage.tsx if the filename changes.
@@ -120,42 +140,32 @@ Current path in code: public/bernardo_public_SWE_Sep30_2025.pdf
 - The app does not require environment variables for local development.
 - If you add integrations later, prefer Vite’s VITE_ prefixed variables and do not commit secrets.
 
-## Deployment (AWS Amplify via Terraform)
+## Setup & Deployment (AWS Amplify + Terraform)
 
-Infrastructure-as-code is under infra/main.tf and includes:
-- An IAM user for development (AdministratorAccess attached) — intended for personal use.
-- An IAM role for Amplify deployments with AdministratorAccess-Amplify.
-- An Amplify App, a production Branch (main), and a Domain association for bernardovc.dev.
+The `infra/` directory automates setup of AWS Amplify hosting, IAM roles, and domain linkage.
 
-High-level steps:
-1) Ensure you have: Terraform, AWS CLI configured, and appropriate credentials/profiles.
-2) Set the required Terraform variable aws_region (e.g., via a terraform.tfvars file or -var flags).
-3) Review provider profile in infra/main.tf (profile = "bernardovc-terraform-admin").
-4) terraform init && terraform apply.
-5) Connect the Amplify App to this GitHub repo in the AWS console if not already connected.
-6) Configure the domain DNS per the outputs (SSL verification CNAME). Wait for verification.
-
-Amplify build uses:
-
-```yaml
-version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - nvm use 20
-        - npm install
-    build:
-      commands:
-        - npm run build
-  artifacts:
-    baseDirectory: dist
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
+**1. Configure Variables**
+```bash
+cd infra
+cp terraform.tfvars.example terraform.tfvars
 ```
+Edit `terraform.tfvars`:
+```hcl
+domain_name    = "my-domain.com"
+repository_url = "https://github.com/your-username/your-fork"
+aws_region     = "us-east-1"
+```
+
+**2. Initialize & Apply**
+```bash
+terraform init
+terraform apply
+```
+
+**3. Complete Amplify Setup**
+- In the AWS console, go to the newly created Amplify app and connect your GitHub repository.
+- Add the provided CNAME record to your domain registrar for SSL and DNS verification.
+- After verification, your site will be live at your custom domain. 🎉
 
 ## Scripts
 
