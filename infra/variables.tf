@@ -3,3 +3,14 @@ variable "aws_region" {
   type        = string
   default     = "us-east-1"
 }
+
+variable "domain_name" {
+  description = "The custom domain name for the website."
+  type        = string
+  # No default, force the user to provide one.
+}
+
+variable "repository_url" {
+  description = "The URL of the GitHub repository."
+  type        = string
+}

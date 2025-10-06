@@ -12,28 +12,6 @@ provider "aws" {
   profile = "bernardovc-terraform-admin"
 }
 
-# ---- Developer ----
-resource "aws_iam_user" "bernardo_developer" {
-  name = "bernardo.villalba"
-  path = "/users/"
-}
-
-resource "aws_iam_user_policy_attachment" "bernardo_admin_attachment" {
-  user       = aws_iam_user.bernardo_developer.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
-
-resource "aws_iam_user_login_profile" "bernardo_login" {
-  user = aws_iam_user.bernardo_developer.name
-  password_reset_required = true
-}
-
-output "bernardo_developer_password" {
-  description = "The initial temporary password for the bernardo.villalba user."
-  value       = aws_iam_user_login_profile.bernardo_login.password
-  sensitive   = true
-}
-
 # ---- Amplify CI/CD ----
 
 resource "aws_iam_role" "amplify_service_role" {
@@ -69,7 +47,7 @@ resource "aws_amplify_app" "personal_website" {
   iam_service_role_arn = aws_iam_role.amplify_service_role.arn
 
   # After applying this -> connect to repo manually on Amplify console
-  repository = "https://github.com/capatazche/my-public-website"
+  repository = var.repository_url
 
   # amplify.yml build configuration
   build_spec = <<-EOT
@@ -102,7 +80,7 @@ resource "aws_amplify_branch" "main" {
 
 resource "aws_amplify_domain_association" "main" {
   app_id      = aws_amplify_app.personal_website.id
-  domain_name = "bernardovc.dev"
+  domain_name = var.domain_name
 
   # Temporarily disabled for first run (to configure DNS, avoid chicken and egg problem)
   wait_for_verification = true

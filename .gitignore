@@ -23,10 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
-# Terraform
+# Terraform personal configuration
+developer.tf
+
+# Terraform state files
 *.tfstate
 *.tfstate.*
-crash.log
 *.tfplan
 .terraform.lock.hcl
 .terraform/
