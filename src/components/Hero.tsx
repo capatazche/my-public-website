@@ -2,9 +2,11 @@ import { useTheme } from "../contexts/ThemeContext.tsx";
 
 import GithubLogoWhite from '../assets/github_white.svg';
 import GithubLogoBlack from '../assets/github_black.svg';
+import {usePersonalData} from "../hooks/usePersonalData.ts";
 
 export default function Hero() {
     const { theme } = useTheme()
+    const { personalInfo } = usePersonalData()
 
     return (
         <section className="text-center py-15">
@@ -15,7 +17,7 @@ export default function Hero() {
                 My name is
             </p>
             <h1 className="text-5xl font-bold tracking-tight">
-                Bernardo Villalba Cahue
+                {personalInfo.name}
             </h1>
 
             <p className="mt-15 max-w-2xl mx-auto text-lg">
@@ -23,7 +25,7 @@ export default function Hero() {
             </p>
 
             <a
-                href="https://github.com/capatazche/my-public-website"
+                href={personalInfo.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`

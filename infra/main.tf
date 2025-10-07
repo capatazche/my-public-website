@@ -9,7 +9,7 @@ terraform {
 
 provider "aws" {
   region  = var.aws_region
-  profile = "bernardovc-terraform-admin"
+  profile = var.aws_profile_for_terraform
 }
 
 # ---- Amplify CI/CD ----

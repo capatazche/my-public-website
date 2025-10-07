@@ -1,5 +1,6 @@
 # Copy this file, name it `terraform.tfvars` and fill in your own values.
 # This file provides the necessary variables for deploying the personal website.
-aws_region      = "us-east-1"
-domain_name     = "johnsmith.com"
-repository_url  = "https://github.com/johnsmith/my-public-website"
+aws_region                = "us-east-1"
+domain_name               = "johnsmith.com"
+repository_url            = "https://github.com/johnsmith/my-public-website"
+aws_profile_for_terraform = "johnsmith-terraform-admin"

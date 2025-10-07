@@ -14,3 +14,8 @@ variable "repository_url" {
   description = "The URL of the GitHub repository."
   type        = string
 }
+
+variable "aws_profile_for_terraform" {
+  description = "The AWS profile in the user's system that Terraform uses."
+  type        = string
+}

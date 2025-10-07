@@ -20,8 +20,8 @@ Includes a theme toggle, a home page with a tech stack showcase, and a resume pa
 - **Clone** your forked repository to your local machine.
 
 **2. Personalize the Content:**
-- **Update Components:** Go through the components in `src/` (especially in `src/pages/` and `src/components/`) and replace my information with your own.
-- **Replace Resume:** Add your own resume PDF to the `public/` folder and update the link in `src/pages/ResumePage.tsx`.
+- **Update Personal Data:** Go to `src/data/personal-data.json` and replace my information with your own.
+- **Replace Resume:** Replace the `resume.pdf` file in the `src/assets/` folder with your own resume (must be named `resume.pdf`).
 
 ## Tech Stack
 
