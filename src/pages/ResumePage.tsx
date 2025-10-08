@@ -2,12 +2,12 @@ import ResumeHeader from '../components/resume/ResumeHeader';
 import ResumeSection  from '../components/resume/ResumeSection';
 import ExperienceItem from '../components/resume/ExperienceItem';
 import SkillsList from '../components/resume/SkillsList';
-import {usePersonalData} from "../hooks/usePersonalData.ts";
+import {useData} from "../hooks/useData.ts";
 
 import resumeFileUrl from "../assets/resume.pdf";
 
 export default function ResumePage() {
-    const { personalInfo, resume } = usePersonalData()
+    const { personalInfo, resume } = useData()
 
     return (
         <div className="mx-auto p-2 md:p-4">

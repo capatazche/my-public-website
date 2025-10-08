@@ -1,4 +1,4 @@
-import data from '../data/personal-data.json';
+import data from '../data/data.json';
 import type {PersonalData} from '../types/data';
 
 /**
@@ -9,7 +9,7 @@ import type {PersonalData} from '../types/data';
  *
  * @returns {PersonalData} The validated and typed personal data.
  */
-export const usePersonalData = (): PersonalData => {
+export const useData = (): PersonalData => {
     // Add validation here to ensure the imported JSON matches the PersonalData type.
     // For this project, TypeScript's static analysis during the import is sufficient.
     return data as PersonalData;

@@ -1,4 +1,3 @@
-// Defines the structure for a single experience or education item.
 export interface ExperienceItem {
     title: string;
     organization: string;
@@ -7,7 +6,6 @@ export interface ExperienceItem {
     details: string[];
 }
 
-// Defines the structure for the skills section.
 export interface Skills {
     languages: string[];
     cloudDevOps: string[];
@@ -17,7 +15,6 @@ export interface Skills {
     developerTools: string[];
 }
 
-// Defines basic personal contact and social media information.
 export interface PersonalInfo {
     name: string;
     title: string;
@@ -27,7 +24,6 @@ export interface PersonalInfo {
     githubUrl: string;
 }
 
-// Defines the structure for the resume content.
 export interface Resume {
     summary: string;
     experience: ExperienceItem[];
@@ -35,8 +31,13 @@ export interface Resume {
     skills: Skills;
 }
 
-// This is the main type that represents the entire personal-data.json file.
+export interface Website {
+    name: string;
+}
+
+// This is the main type that represents the entire data.json file.
 export interface PersonalData {
+    website: Website;
     personalInfo: PersonalInfo;
     resume: Resume;
 }

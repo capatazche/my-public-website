@@ -2,11 +2,11 @@ import { useTheme } from "../contexts/ThemeContext.tsx";
 
 import GithubLogoWhite from '../assets/github_white.svg';
 import GithubLogoBlack from '../assets/github_black.svg';
-import {usePersonalData} from "../hooks/usePersonalData.ts";
+import {useData} from "../hooks/useData.ts";
 
 export default function Hero() {
     const { theme } = useTheme()
-    const { personalInfo } = usePersonalData()
+    const { personalInfo } = useData()
 
     return (
         <section className="text-center py-15">

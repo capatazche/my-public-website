@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {ThemeToggleButton} from "./ThemeToggleButton.tsx";
+import {useData} from "../hooks/useData.ts";
 
 
 export default function Navbar() {
+    const { website } = useData()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const toggleMenu = () => {
@@ -16,7 +18,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
                     <Link to="/" className="text-2xl  hover:no-underline hover:text-accent-hover">
                         <span className="text-secondary hover:text-accent-hover">
-                            bernardovc
+                            {website.name}
                         </span>_
                     </Link>
                     <div>
@@ -28,7 +30,6 @@ export default function Navbar() {
                 <div className="hidden md:flex space-x-4">
                     <Link to="/">Home</Link>
                     <Link to="/resume">Resume</Link>
-                    {/*<Link to="/contact">Contact</Link>*/}
                 </div>
 
                 {/* Mobile menu button (Hamburger) */}
@@ -54,7 +55,6 @@ export default function Navbar() {
                 <div className="flex flex-col space-y-2">
                     <Link to="/" className="block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Home</Link>
                     <Link to="/resume" className="block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Resume</Link>
-                    {/*<Link to="/contact" className="block px-4 py-2" onClick={() => setIsMenuOpen(false)}>Contact</Link>*/}
                 </div>
             </div>
         </nav>
