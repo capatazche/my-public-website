@@ -51,8 +51,8 @@ const technologies = [
         description: 'The platform I will use for seamless hosting and CI/CD.',
         logoOnLight: AmplifyLogo,
         logoOnDark: AmplifyLogo,
-        shadowColorOnLight: '#BD0816',
-        shadowColorOnDark: '#BD0816',
+        shadowColorOnLight: '#de2d34',
+        shadowColorOnDark: '#de2d34',
         href: 'https://aws.amazon.com/amplify/'
     },
     {
@@ -69,11 +69,11 @@ const technologies = [
 export default function TechStack() {
     const { theme } = useTheme();
     return (
-        <section className="py-15">
+        <section id="tech-stack" className="pt-12 pb-15">
             <div className="text-center">
                 <h3 className="text-3xl font-bold">Built With</h3>
                 <p className="mt-2">
-                    The core technologies making this website possible.
+                    The core technologies making this project possible.
                 </p>
             </div>
 
