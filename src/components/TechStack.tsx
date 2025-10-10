@@ -1,59 +1,79 @@
-import ReactLogo from '../assets/react.svg';
+import ReactOnLightLogo from '../assets/reactOnLight.svg';
+import ReactOnDarkLogo from '../assets/reactOnDark.svg';
 import TypescriptLogo from '../assets/typescript.svg';
 import TailwindLogo from '../assets/tailwind.svg';
 import ViteLogo from '../assets/vite.svg';
 import AmplifyLogo from '../assets/amplify.svg';
+import TerraformOnLightLogo from '../assets/terraform_onLight.svg'
+import TerraformOnDarkLogo from '../assets/terraform_onDark.svg';
+
+import { useTheme } from "../contexts/ThemeContext.tsx";
 
 const technologies = [
     {
         name: 'React',
         description: 'A powerful library for building dynamic user interfaces.',
-        logo: ReactLogo ,
-        className: "react",
-        shadowColor: '#61dafbcc',
+        logoOnLight: ReactOnLightLogo,
+        logoOnDark: ReactOnDarkLogo,
+        shadowColorOnLight: '#087EA4',
+        shadowColorOnDark: '#58C4DC',
         href: 'https://react.dev'
     },
     {
         name: 'TypeScript',
         description: 'Adds static types to JavaScript, improving code quality and maintainability.',
-        logo: TypescriptLogo,
-        className: "typescript",
-        shadowColor: '#3178c6cc',
+        logoOnLight: TypescriptLogo,
+        logoOnDark: TypescriptLogo,
+        shadowColorOnLight: '#3178c6',
+        shadowColorOnDark: '#3178c6',
         href: 'https://www.typescriptlang.org/'
     },
     {
         name: 'Tailwind CSS v4',
         description: 'A utility-first CSS framework for rapid, custom UI development.',
-        logo: TailwindLogo,
-        className:"tailwind",
-        shadowColor: '#06b6d4cc',
+        logoOnLight: TailwindLogo,
+        logoOnDark: TailwindLogo,
+        shadowColorOnLight: '#38bdf8',
+        shadowColorOnDark: '#38bdf8',
         href: 'https://tailwindcss.com'
     },
     {
         name: 'Vite',
         description: 'A next-generation frontend tool for blazing-fast development.',
-        logo: ViteLogo,
-        className:"vite",
-        shadowColor: '#646cffcc',
+        logoOnLight: ViteLogo,
+        logoOnDark: ViteLogo,
+        shadowColorOnLight: '#646cff',
+        shadowColorOnDark: '#646cff',
         href: 'https://vitejs.dev'
     },
     {
         name: 'AWS Amplify',
         description: 'The platform I will use for seamless hosting and CI/CD.',
-        logo: AmplifyLogo,
-        className:"amplify",
-        shadowColor: '#ff9900cc',
+        logoOnLight: AmplifyLogo,
+        logoOnDark: AmplifyLogo,
+        shadowColorOnLight: '#de2d34',
+        shadowColorOnDark: '#de2d34',
         href: 'https://aws.amazon.com/amplify/'
     },
+    {
+        name: 'Terraform',
+        description: 'IaC tool to manage the cloud infrastructure associated with this project',
+        logoOnLight: TerraformOnLightLogo,
+        logoOnDark: TerraformOnDarkLogo,
+        shadowColorOnDark: '#a067da',
+        shadowColorOnLight: '#7b42bc',
+        href: 'https://developer.hashicorp.com/terraform'
+    }
 ];
 
 export default function TechStack() {
+    const { theme } = useTheme();
     return (
-        <section className="py-15">
+        <section id="tech-stack" className="pt-12 pb-15">
             <div className="text-center">
                 <h3 className="text-3xl font-bold">Built With</h3>
                 <p className="mt-2">
-                    The core technologies making this website possible.
+                    The core technologies making this project possible.
                 </p>
             </div>
 
@@ -74,8 +94,12 @@ export default function TechStack() {
                             rel="noopener noreferrer"
                         >
                             <img
-                                src={tech.logo} alt={`${tech.name} logo`}
-                                style={{ '--shadow-color': tech.shadowColor } as React.CSSProperties}
+                                src={theme === 'light'? tech.logoOnLight : tech.logoOnDark} alt={`${tech.name} logo`}
+                                style={
+                                    {
+                                        '--shadow-color': theme === 'light' ? tech.shadowColorOnLight : tech.shadowColorOnDark
+                                    } as React.CSSProperties
+                                }
                                 className={`
                                     hover:drop-shadow-[0_0_2em_var(--shadow-color)]
                                     logo h-14 w-14

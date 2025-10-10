@@ -2,12 +2,12 @@ import ResumeHeader from '../components/resume/ResumeHeader';
 import ResumeSection  from '../components/resume/ResumeSection';
 import ExperienceItem from '../components/resume/ExperienceItem';
 import SkillsList from '../components/resume/SkillsList';
-import {usePersonalData} from "../hooks/usePersonalData.ts";
+import {useData} from "../hooks/useData.ts";
 
 import resumeFileUrl from "../assets/resume.pdf";
 
 export default function ResumePage() {
-    const { personalInfo, resume } = usePersonalData()
+    const { personalInfo, resume } = useData()
 
     return (
         <div className="mx-auto p-2 md:p-4">
@@ -47,6 +47,15 @@ export default function ResumePage() {
                 <p className="text-justify">{resume.summary}</p>
             </ResumeSection>
 
+            <ResumeSection title="Technical Skills">
+                <SkillsList category="Languages" skills={resume.skills.languages} />
+                <SkillsList category="Cloud & DevOps" skills={resume.skills.cloudDevOps} />
+                <SkillsList category="Data Science" skills={resume.skills.dataScience} />
+                <SkillsList category="Backend" skills={resume.skills.backend} />
+                <SkillsList category="Frontend" skills={resume.skills.frontend} />
+                <SkillsList category="Developer Tools" skills={resume.skills.developerTools} />
+            </ResumeSection>
+
             <ResumeSection title="Experience">
                 <>
                     {resume.experience.map((job, index) => (
@@ -63,16 +72,6 @@ export default function ResumePage() {
                         <ExperienceItem key={index} {...edu} />
                     ))}
                 </>
-            </ResumeSection>
-
-
-            <ResumeSection title="Technical Skills">
-                <SkillsList category="Languages" skills={resume.skills.languages} />
-                <SkillsList category="Cloud & DevOps" skills={resume.skills.cloudDevOps} />
-                <SkillsList category="Data Science" skills={resume.skills.dataScience} />
-                <SkillsList category="Backend" skills={resume.skills.backend} />
-                <SkillsList category="Frontend" skills={resume.skills.frontend} />
-                <SkillsList category="Developer Tools" skills={resume.skills.developerTools} />
             </ResumeSection>
         </div>
     );

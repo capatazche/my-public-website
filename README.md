@@ -20,7 +20,7 @@ Includes a theme toggle, a home page with a tech stack showcase, and a resume pa
 - **Clone** your forked repository to your local machine.
 
 **2. Personalize the Content:**
-- **Update Personal Data:** Go to `src/data/personal-data.json` and replace my information with your own.
+- **Update Personal Data:** Go to `src/data/data.json` and replace my information with your own.
 - **Replace Resume:** Replace the `resume.pdf` file in the `src/assets/` folder with your own resume (must be named `resume.pdf`).
 
 ## Tech Stack
@@ -100,11 +100,6 @@ my-personal-website/
 - Defined in `src/main.tsx`
     - `/` → HomePage
     - `/resume` → ResumePage
-
-## Resume PDF
-
-The ResumePage includes a download button for a PDF in `/public/`.  
-To update it, replace the file and adjust the path in `ResumePage.tsx` if needed.
 
 ## Deployment (AWS Amplify + Terraform)
 
