@@ -17,7 +17,8 @@ const technologies = [
         logoOnDark: ReactOnDarkLogo,
         shadowColorOnLight: '#087EA4',
         shadowColorOnDark: '#58C4DC',
-        href: 'https://react.dev'
+        href: 'https://react.dev',
+        className: 'react'
     },
     {
         name: 'TypeScript',
@@ -26,7 +27,8 @@ const technologies = [
         logoOnDark: TypescriptLogo,
         shadowColorOnLight: '#3178c6',
         shadowColorOnDark: '#3178c6',
-        href: 'https://www.typescriptlang.org/'
+        href: 'https://www.typescriptlang.org/',
+        className: ''
     },
     {
         name: 'Tailwind CSS v4',
@@ -35,7 +37,8 @@ const technologies = [
         logoOnDark: TailwindLogo,
         shadowColorOnLight: '#38bdf8',
         shadowColorOnDark: '#38bdf8',
-        href: 'https://tailwindcss.com'
+        href: 'https://tailwindcss.com',
+        className: ''
     },
     {
         name: 'Vite',
@@ -44,7 +47,8 @@ const technologies = [
         logoOnDark: ViteLogo,
         shadowColorOnLight: '#646cff',
         shadowColorOnDark: '#646cff',
-        href: 'https://vitejs.dev'
+        href: 'https://vitejs.dev',
+        className: ''
     },
     {
         name: 'AWS Amplify',
@@ -53,7 +57,8 @@ const technologies = [
         logoOnDark: AmplifyLogo,
         shadowColorOnLight: '#de2d34',
         shadowColorOnDark: '#de2d34',
-        href: 'https://aws.amazon.com/amplify/'
+        href: 'https://aws.amazon.com/amplify/',
+        className: ''
     },
     {
         name: 'Terraform',
@@ -62,7 +67,8 @@ const technologies = [
         logoOnDark: TerraformOnDarkLogo,
         shadowColorOnDark: '#a067da',
         shadowColorOnLight: '#7b42bc',
-        href: 'https://developer.hashicorp.com/terraform'
+        href: 'https://developer.hashicorp.com/terraform',
+        className: ''
     }
 ];
 
@@ -102,7 +108,7 @@ export default function TechStack() {
                                 }
                                 className={`
                                     hover:drop-shadow-[0_0_2em_var(--shadow-color)]
-                                    logo h-14 w-14
+                                    logo h-14 w-14 ${tech.className}
                                 `}
                             />
                         </a>
