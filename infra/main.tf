@@ -56,7 +56,7 @@ resource "aws_amplify_app" "personal_website" {
       phases:
         build:
           commands:
-            - npx ampx pipeline-deploy
+            - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
     frontend:
       phases:
         preBuild:
