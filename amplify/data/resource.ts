@@ -27,9 +27,5 @@ export const data = defineData({
     schema,
     authorizationModes: {
         defaultAuthorizationMode: 'identityPool',
-        // @ts-expect-error: not yet in published typings
-        identityPoolConfig: {
-            unauthenticatedAccessAllowed: true,
-        },
     },
 });
