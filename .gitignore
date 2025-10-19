@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+/package-lock.json
 
 # Editor directories and files
 .vscode/*
@@ -36,3 +37,12 @@ terraform.tfvars
 
 # ENV
 .env
+
+# amplify
+.amplify
+amplify_outputs*
+amplifyconfiguration*
+/amplify/data/resource.d.ts
+/amplify/data/resource.js
+/amplify/backend.d.ts
+/amplify/backend.js
