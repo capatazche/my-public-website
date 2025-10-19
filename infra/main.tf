@@ -42,6 +42,22 @@ resource "aws_iam_role_policy_attachment" "amplify_role_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess-Amplify"
 }
 
+resource "aws_iam_role_policy" "amplify_ssm_bootstrap_check" {
+  name = "amplify-cdk-bootstrap-check-policy"
+  role = aws_iam_role.amplify_service_role.id
+
+  policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = "ssm:GetParameter",
+        Resource = "arn:aws:ssm:*:*:parameter/cdk-bootstrap/*"
+      }
+    ]
+  })
+}
+
 resource "aws_amplify_app" "personal_website" {
   name                 = "personal-website"
   iam_service_role_arn = aws_iam_role.amplify_service_role.arn
