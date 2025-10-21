@@ -54,11 +54,17 @@ export const handler = async (event: HandlerEvent): Promise<string> => {
         // 5. Prepare data for the updates
         const now = new Date();
         const nowIso = now.toISOString();
-        // Set expiration 30 days from now
-        const expirationTime = Math.floor((now.getTime() / 1000) + (30 * 24 * 60 * 60));
+        // Set expiration 30 days from now (store as ISO string to match schema timestamp type)
+        const expirationIso = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)).toISOString();
 
         // 6. Build the atomic transaction
-        const updateExpressions = ['ADD totalVisitors :inc SET #typename = :typename'];
+        const addExpressions: string[] = ['totalVisitors :inc'];
+        if (isNewVisitor) {
+            // Only increment uniqueVisitors if this is their first visit
+            addExpressions.push('uniqueVisitors :inc');
+        }
+        const updateExpression = `ADD ${addExpressions.join(', ')} SET #typename = :typename`;
+
         const expressionValues: Record<string, any> = {
             ':inc': 1,
             ':typename': 'Stats'
@@ -66,11 +72,6 @@ export const handler = async (event: HandlerEvent): Promise<string> => {
         const expressionNames = {
             '#typename': '__typename'
         };
-
-        if (isNewVisitor) {
-            // Only increment uniqueVisitors if this is their first visit
-            updateExpressions.push('uniqueVisitors :inc');
-        }
 
         const transaction = new TransactWriteCommand({
             TransactItems: [
@@ -81,7 +82,7 @@ export const handler = async (event: HandlerEvent): Promise<string> => {
                         Item: {
                             visitorId: visitorId,
                             lastSeen: nowIso,
-                            expirationTime: expirationTime,
+                            expirationTime: expirationIso,
                             __typename: 'Visitor', // Manually set the type for AppSync
                         },
                     },
@@ -93,7 +94,7 @@ export const handler = async (event: HandlerEvent): Promise<string> => {
                         Key: {
                             id: STATS_ID, // Update our single, global row
                         },
-                        UpdateExpression: updateExpressions.join(', '),
+                        UpdateExpression: updateExpression,
                         ExpressionAttributeValues: expressionValues,
                         ExpressionAttributeNames: expressionNames,
                     },
