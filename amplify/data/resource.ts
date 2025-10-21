@@ -1,4 +1,5 @@
 import {a, type ClientSchema, defineData} from '@aws-amplify/backend';
+import { trackVisitFn } from '../functions/track-visit/resource';
 
 const schema = a.schema({
     Stats: a
@@ -19,6 +20,23 @@ const schema = a.schema({
         .identifier(['visitorId'])
         // .ttl('expirationTime') // Not available in current typings; leaving field for future support.
         .authorization((allow) => [allow.guest(), allow.authenticated()]),
+
+    // Custom mutation to track a visit and update stats atomically via a Lambda resolver
+    trackVisit: a
+        .mutation()
+        .arguments({
+            visitorId: a.id().required(),
+        })
+        .returns(
+            a.customType({
+                isNew: a.boolean(),
+                totalVisitors: a.integer(),
+                uniqueVisitors: a.integer(),
+                lastSeen: a.timestamp(),
+            })
+        )
+        .authorization((allow) => [allow.guest(), allow.authenticated()])
+        .handler(a.handler.function(trackVisitFn)),
 });
 
 export type Schema = ClientSchema<typeof schema>;

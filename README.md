@@ -148,3 +148,26 @@ Personal project; issues and PRs are welcome but may be reviewed at the authorâ€
 ## License
 
 No license specified. All rights reserved by the repository owner unless stated otherwise.
+
+## Visitor Tracking (Amplify Gen 2)
+
+This project uses Amplify Gen 2 Data to track visitors in two DynamoDB models:
+
+- Stats: Stores counters for totalVisitors and uniqueVisitors.
+- Visitor: Stores each visitorId, lastSeen, and expirationTime (30 days out).
+
+How it works:
+- On app start, the client generates/persists a visitorId in localStorage and calls a custom mutation trackVisit.
+- The mutation is implemented as a Lambda function that atomically:
+  - Upserts the Visitor record, updating lastSeen and pushing expirationTime 30 days forward.
+  - Increments Stats.totalVisitors (+1 always) and Stats.uniqueVisitors (+1 only if the visitor is new).
+
+Key files:
+- amplify/data/resource.ts: Models and the custom trackVisit mutation
+- amplify/functions/track-visit: Lambda definition and handler
+- src/lib/visitorTracking.ts: Client helper that invokes the mutation
+- src/main.tsx: Boots visitor tracking after Amplify.configure
+
+Deployment notes:
+- After pulling/pushing the backend (amplify push), the function and schema will be deployed.
+- Default authorization mode is identityPool, and both guest and authenticated users are allowed to call trackVisit.
