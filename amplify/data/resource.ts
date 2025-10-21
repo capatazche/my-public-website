@@ -47,3 +47,14 @@ export const data = defineData({
         defaultAuthorizationMode: 'identityPool',
     },
 });
+
+// Post-definition wiring to avoid circular imports at synth time.
+// The `resources` bag exists at deploy-time but isn't fully typed; cast to any locally.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const resources = (data as any).resources;
+
+// Grant the function permissions to read/write both tables
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+resources.Visitor.grantReadWrite(trackVisitFn);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+resources.Stats.grantReadWrite(trackVisitFn);
