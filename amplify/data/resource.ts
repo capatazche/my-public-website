@@ -19,6 +19,16 @@ const schema = a.schema({
         .identifier(['visitorId'])
         // .ttl('expirationTime') // Not available in current typings; leaving field for future support.
         .authorization((allow) => [allow.guest(), allow.authenticated()]),
+
+    // Custom mutation to record/update visitor record called by the client
+    recordVisit: a
+        .mutation()
+        .arguments({
+            visitorId: a.id().required(),
+        })
+        .returns(a.string())
+        // Point to the handler function (lambda)
+        .handler(a.handler.function('recordVisitHandler'))
 });
 
 export type Schema = ClientSchema<typeof schema>;
