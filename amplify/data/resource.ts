@@ -3,9 +3,11 @@ import {a, type ClientSchema, defineData} from '@aws-amplify/backend';
 const schema = a.schema({
     Stats: a
         .model({
+            statsId: a.id().required(),
             totalVisitors: a.integer(),
             uniqueVisitors: a.integer(),
         })
+        .identifier(['statsId'])
         .authorization((allow) => [allow.guest(), allow.authenticated()]),
 
     // This model tracks currently active visitors. Note: TTL is not currently exposed in the @aws-amplify/backend schema typings.

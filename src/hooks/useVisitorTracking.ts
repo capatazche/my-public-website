@@ -2,10 +2,7 @@ import {useEffect, useState} from 'react';
 import {generateClient} from 'aws-amplify/data';
 import type {Schema} from '../../amplify/data/resource';
 
-// 1. Generate the fully-typed Amplify client
-const client = generateClient<Schema>();
-
-// 2. Define a key for localStorage
+// 1. Define a key for localStorage
 const VISITOR_ID_KEY = 'bernardos_website_visitor_id';
 
 /**
@@ -29,7 +26,10 @@ export const useVisitorTracking = () => {
                     localStorage.setItem(VISITOR_ID_KEY, visitorId);
                 }
 
-                // 2. Call our mutation
+                // 2. Create the client after Amplify has been configured (main.tsx)
+                const client = generateClient<Schema>();
+
+                // 3. Call our mutation
                 const { data, errors } = await client.mutations.recordVisit({
                     visitorId,
                 });
@@ -49,7 +49,7 @@ export const useVisitorTracking = () => {
             }
         };
 
-        // 3. Call the tracking function
+        // 4. Call the tracking function
         trackVisitor();
 
     }, []);
