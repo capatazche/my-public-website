@@ -19,6 +19,17 @@ const schema = a.schema({
         .identifier(['visitorId'])
         // .ttl('expirationTime') // Not available in current typings; leaving field for future support.
         .authorization((allow) => [allow.guest(), allow.authenticated()]),
+
+    // Custom mutation to record/update visitor record called by the client
+    recordVisit: a
+        .mutation()
+        .arguments({
+            visitorId: a.id().required(),
+        })
+        .returns(a.string())
+        // Point to the handler function (lambda)
+        .handler(a.handler.function('recordVisitHandler'))
+        .authorization((allow) => [allow.guest(), allow.authenticated()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -27,9 +38,5 @@ export const data = defineData({
     schema,
     authorizationModes: {
         defaultAuthorizationMode: 'identityPool',
-        // @ts-expect-error: not yet in published typings
-        identityPoolConfig: {
-            unauthenticatedAccessAllowed: true,
-        },
     },
 });
