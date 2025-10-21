@@ -68,11 +68,6 @@ resource "aws_amplify_app" "personal_website" {
   # amplify.yml build configuration
   build_spec = <<-EOT
     version: 1
-    backend:
-      phases:
-        build:
-          commands:
-            - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
     frontend:
       phases:
         preBuild:

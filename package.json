@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
-    "@aws-sdk/client-dynamodb": "^3.705.0",
-    "@aws-sdk/lib-dynamodb": "^3.705.0",
     "aws-amplify": "^6.15.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
