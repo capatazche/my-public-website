@@ -1,13 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
 import {ThemeProvider} from "./contexts/ThemeContext.tsx";
-import {useVisitorTracking} from "./hooks/useVisitorTracking.ts";
 
 import './App.css'
 
 function App() {
-    useVisitorTracking()
-
     return (
       <div className="h-screen w-screen">
         <ThemeProvider>

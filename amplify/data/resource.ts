@@ -1,8 +1,4 @@
-import {a, type ClientSchema, defineData, defineFunction} from '@aws-amplify/backend';
-
-const recordVisitHandler = defineFunction({
-    entry: './recordVisitHandler/handler.ts',
-})
+import {a, type ClientSchema, defineData} from '@aws-amplify/backend';
 
 const schema = a.schema({
     Stats: a
@@ -22,17 +18,6 @@ const schema = a.schema({
         })
         .identifier(['visitorId'])
         // .ttl('expirationTime') // Not available in current typings; leaving field for future support.
-        .authorization((allow) => [allow.guest(), allow.authenticated()]),
-
-    // Custom mutation to record/update visitor record called by the client
-    recordVisit: a
-        .mutation()
-        .arguments({
-            visitorId: a.id().required(),
-        })
-        .returns(a.string())
-        // Point to the handler function (lambda)
-        .handler(a.handler.function(recordVisitHandler))
         .authorization((allow) => [allow.guest(), allow.authenticated()]),
 });
 
