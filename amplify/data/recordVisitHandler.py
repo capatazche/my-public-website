@@ -1,11 +1,9 @@
-# amplify/data/recordVisitHandler.py
 import os
 import boto3
 import datetime
 from botocore.exceptions import ClientError
 import logging
 
-# Configure logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -20,7 +18,6 @@ try:
     VISITOR_TABLE_NAME = os.environ['AMPLIFY_DATA_VISITOR_TABLE_NAME']
 except KeyError:
     logger.error("Failed to get table names from environment variables.")
-    # This will fail the Lambda execution if env vars aren't set
     raise
 
 def handler(event, context):
@@ -36,7 +33,6 @@ def handler(event, context):
         logger.info(f"Processing visit for visitorId: {visitor_id}")
 
         visitor_table = dynamodb.Table(VISITOR_TABLE_NAME)
-        stats_table = dynamodb.Table(STATS_TABLE_NAME)
 
         # 1. Check if this is a new visitor
         is_new_visitor = False
@@ -52,26 +48,27 @@ def handler(event, context):
         # 2. Prepare data for the updates
         now = datetime.datetime.now(datetime.timezone.utc)
         now_iso = now.isoformat()
-        # Set expiration 30 days from now (as you mentioned)
+        # Set expiration 30 days from now
         expiration_timestamp = int((now + datetime.timedelta(days=30)).timestamp())
 
         # 3. Build an atomic transaction
         # This ensures BOTH updates succeed or BOTH fail together.
-        transact_items = []
-
         # Transaction Item 1: Create or Update the Visitor item
         # We use PutItem as it creates or completely replaces the item.
-        transact_items.append({
+        transact_items = [{
             'Put': {
                 'TableName': VISITOR_TABLE_NAME,
                 'Item': {
                     'visitorId': visitor_id,
                     'lastSeen': now_iso,
                     'expirationTime': expiration_timestamp,
-                    '__typename': 'Visitor' # Manually set the type for AppSync
+                    '__typename': 'Visitor'  # Manually set the type for AppSync
                 }
             }
-        })
+        }]
+
+        # Transaction Item 1: Create or Update the Visitor item
+        # We use PutItem as it creates or completely replaces the item.
 
         # Transaction Item 2: Update the Stats item atomically
         # This will create the stats row if it doesn't exist.
@@ -109,11 +106,9 @@ def handler(event, context):
             # Handle potential transaction conflicts, e.g., if stats are updated simultaneously
             if e.response['Error']['Code'] == 'TransactionCanceledException':
                 logger.warning("Transaction was cancelled, possibly due to a conflict.")
-                # You could retry here, but for a simple visitor counter,
-                # failing silently might be acceptable.
+                # Could retry here, but for a simple visitor counter, failing silently might be acceptable.
             raise
 
     except Exception as e:
         logger.error(f"An unexpected error occurred: {str(e)}")
-        # Return a user-friendly error to the client
         raise Exception(f"Failed to record visit: {str(e)}")

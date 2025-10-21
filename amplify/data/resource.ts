@@ -29,6 +29,7 @@ const schema = a.schema({
         .returns(a.string())
         // Point to the handler function (lambda)
         .handler(a.handler.function('recordVisitHandler'))
+        .authorization((allow) => [allow.guest(), allow.authenticated()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
