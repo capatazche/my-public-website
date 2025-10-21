@@ -1,4 +1,8 @@
-import {a, type ClientSchema, defineData} from '@aws-amplify/backend';
+import {a, type ClientSchema, defineData, defineFunction} from '@aws-amplify/backend';
+
+const recordVisitHandler = defineFunction({
+    entry: './recordVisitHandler/handler.ts',
+})
 
 const schema = a.schema({
     Stats: a
@@ -28,7 +32,7 @@ const schema = a.schema({
         })
         .returns(a.string())
         // Point to the handler function (lambda)
-        .handler(a.handler.function('recordVisitHandler'))
+        .handler(a.handler.function(recordVisitHandler))
         .authorization((allow) => [allow.guest(), allow.authenticated()]),
 });
 
