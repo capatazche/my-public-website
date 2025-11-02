@@ -11,19 +11,19 @@
     "githubUrl": "https://github.com/capatazche"
   },
   "resume": {
-    "summary": "Software Engineer with 8+ years of experience specializing in data-intensive systems and FinTech. Expertise in distributed full-stack applications, complex data pipelines, and modern cloud infrastructure. Ability to lead technical projects from concept to production, translating complex business needs into robust and efficient software solutions.",
+    "summary": "Software Engineer specializing in data-intensive systems, full-stack applications, complex data pipelines, and modern cloud infrastructure.",
     "experience": [
       {
-        "title": "Founder & Lead Software Engineer",
+        "title": "Co-Founder & Lead Software Engineer",
         "organization": "Narranomics",
         "location": "Minneapolis, Minnesota, United States",
-        "dateRange": "May 2023 - October 2025",
+        "dateRange": "May 2023 - Present",
         "details": [
-          "Led the development of an AI-driven, sentiment-based trading platform from concept to production.",
-          "Developed and deployed a daily automated job to scrape and ingest publications from the Federal Reserve, expanding the platform's data sources to include key macroeconomic signals.",
-          "Owned the entire front-end development lifecycle using React and TypeScript, including a specialized data-labeling application that improved the quality of our NLP model training data.",
-          "Designed and implemented a parallelized simulation framework using Docker, Argo Workflows, and AWS to backtest thousands of trading strategy parameters, reducing the R&D cycle from days to hours—an efficiency gain of over 90%.",
-          "Translated business goals into a technical roadmap, led full-stack architectural decisions, and presented the platform's strategy and performance to prospective investors and key stakeholders."
+          "Led the strategy and development of an AI-driven, sentiment-based financial futures trading strategy and presented it to prospective investors and key stakeholders.",
+          "Used Python, Docker, and Kubernetes, to develop and deploy a recurrent automated job to scrape and ingest communications from the Federal Reserve.",
+          "Owned the entirety of the frontend, including a specialized data labeling, data analysis, and system health applications as well as the Narranomics public website. These were developed with React and NextJS.",
+          "Owned the backend and DBs supporting the data labeling and data analysis frontends. It is written in Kotlin and connected to a PostreSQL DB.",
+          "Leveraged our auto-scaling Kubernetes cluster, Docker, and Argo-Workflows to design and implement a parallelized simulation framework in Python to backtest hundreds of thousands of trading strategy parameters, reducing the R&D cycle duration by over 90%."
         ]
       },
       {
@@ -68,7 +68,6 @@
           "Implemented new features and documented code for DB Entitlements, the bank's largest internal authorization application.",
           "Developed a new UI for the Distressed Products Group to visualize and edit complex financial instruments.",
           "Automated the generation of three weekly reports for the trading team, saving approximately 9 person-hours per month."
-
         ]
       }
     ],
